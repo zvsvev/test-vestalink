@@ -26,13 +26,19 @@ jobs:
       - name: Install Solana CLI
         run: |
           sh -c "$(curl -sSfL https://release.anza.xyz/v3.0.15/install)"
-          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+          SOLANA_BIN="$HOME/.local/share/solana/install/active_release/bin"
+          echo "$SOLANA_BIN" >> "$GITHUB_PATH"
+          export PATH="$SOLANA_BIN:$PATH"
+          solana --version
+          solana-keygen --version
 
       - name: Install Anchor CLI
         run: cargo install --git https://github.com/coral-xyz/anchor avm --locked --force && avm install 0.32.0 && avm use 0.32.0
 
       - name: Create CI wallet
-        run: solana-keygen new --no-bip39-passphrase --silent --force -o ~/.config/solana/id.json
+        run: |
+          export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+          solana-keygen new --no-bip39-passphrase --silent --force -o ~/.config/solana/id.json
 
       - name: Install npm dependencies
         run: npm ci
