@@ -1,0 +1,23 @@
+[package]
+name = "solana-distribution-protocol"
+version = "0.1.0"
+description = "Anchor program for token vesting, streaming, and scheduled distributions on Solana"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "solana_distribution_protocol"
+
+[features]
+default = []
+anchor-debug = []
+cpi = ["no-entrypoint"]
+custom-heap = []
+custom-panic = []
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]
+
+[dependencies]
+anchor-lang = "=0.32.0"

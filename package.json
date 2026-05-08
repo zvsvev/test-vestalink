@@ -1,0 +1,17 @@
+{
+  "name": "solana-distribution-protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "anchor build",
+    "deploy:devnet": "anchor deploy --provider.cluster devnet",
+    "test": "anchor test",
+    "test:ts": "tsx --test tests/**/*.ts"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.32.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

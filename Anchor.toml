@@ -1,0 +1,35 @@
+[toolchain]
+package_manager = "npm"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.devnet]
+solana_distribution_protocol = "6a32KtC9vdynb89TRSXxPe369nMnsZW7MuKAdxJ9iNT7"
+
+[programs.localnet]
+solana_distribution_protocol = "6a32KtC9vdynb89TRSXxPe369nMnsZW7MuKAdxJ9iNT7"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "npm run test:ts"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[test.validator]
+bind_address = "127.0.0.1"
+dynamic_port_range = "8904-8999"
+faucet_port = 8903
+gossip_port = 8902
+ledger = ".anchor/test-ledger"
+rpc_port = 8900
